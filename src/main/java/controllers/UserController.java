@@ -17,13 +17,21 @@ import repositories.UserRepository;
 @RequestMapping("/usuariosgeral")
 public class UserController {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping
-    public ResponseEntity<UserModel> saveProduct(@RequestBody @Valid UserRecordDto userRecordDto) {
-        var userModel = new UserModel();
+    public ResponseEntity<UserModel> createUser(@RequestBody @Valid UserRecordDto userRecordDto) {
+        UserModel userModel = new UserModel();
         BeanUtils.copyProperties(userRecordDto, userModel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(userModel));
+
+        // Adicione lógica adicional aqui, se necessário
+
+        UserModel savedUser = userRepository.save(userModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
 }
