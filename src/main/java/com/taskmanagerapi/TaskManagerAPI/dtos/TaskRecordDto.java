@@ -6,6 +6,7 @@ import com.taskmanagerapi.TaskManagerAPI.models.Priority;
 import com.taskmanagerapi.TaskManagerAPI.models.Status;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public record TaskRecordDto(
         @NotBlank String taskName,
@@ -14,5 +15,5 @@ public record TaskRecordDto(
         @NotBlank Status status,
         @NotBlank Priority priority,
         @NotBlank String category
-        ) {
+) {
 }

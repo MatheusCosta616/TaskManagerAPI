@@ -1,5 +1,6 @@
 package com.taskmanagerapi.TaskManagerAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,4 +44,10 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
         this.userEmail = userEmail;
         this.registrationDate = LocalDate.now();
     }
+
+    @JsonIgnore
+    public UserModel getSelf() {
+        return this;
+    }
+
 }
