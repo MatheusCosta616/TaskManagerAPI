@@ -1,8 +1,8 @@
-package controllers;
+package com.taskmanagerapi.TaskManagerAPI.controllers;
 
-import dtos.UserRecordDto;
+import com.taskmanagerapi.TaskManagerAPI.dtos.UserRecordDto;
 import jakarta.validation.Valid;
-import models.UserModel;
+import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import repositories.UserRepository;
+import com.taskmanagerapi.TaskManagerAPI.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/usuariosgeral")

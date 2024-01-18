@@ -1,9 +1,9 @@
-package dtos;
+package com.taskmanagerapi.TaskManagerAPI.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import models.Priority;
-import models.Status;
+import com.taskmanagerapi.TaskManagerAPI.models.Priority;
+import com.taskmanagerapi.TaskManagerAPI.models.Status;
 
 import java.time.LocalDate;
 

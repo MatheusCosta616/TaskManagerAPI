@@ -1,4 +1,4 @@
-package models;
+package com.taskmanagerapi.TaskManagerAPI.models;
 
 public enum Priority {
     BAIXA,
