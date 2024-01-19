@@ -8,17 +8,20 @@ import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Table(name = "TB_TASK")
 @Getter
 @Setter
 @Entity
 public class TaskModel extends RepresentationModel<TaskModel> implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String idTask;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    private UUID idTask;
 
     private String taskName;
 
