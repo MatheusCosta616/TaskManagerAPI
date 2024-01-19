@@ -1,5 +1,6 @@
 package com.taskmanagerapi.TaskManagerAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Getter
 @Setter
 @Entity
+@JsonIgnoreProperties("user")
 public class TaskModel extends RepresentationModel<TaskModel> implements Serializable {
 
     @Id

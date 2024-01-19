@@ -19,6 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
@@ -69,8 +70,14 @@ public class UserController {
         }
 
         List<TaskModel> userTasks = optionalUser.get().getTasks();
-        return ResponseEntity.status(HttpStatus.OK).body(userTasks);
+        // Mapeie para IDs ou detalhes completos conforme necessário
+        List<UUID> taskIds = userTasks.stream().map(TaskModel::getIdTask).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(taskIds);
+        // Ou, se você quiser retornar detalhes completos:
+        // return ResponseEntity.status(HttpStatus.OK).body(userTasks);
     }
+
 
 
 

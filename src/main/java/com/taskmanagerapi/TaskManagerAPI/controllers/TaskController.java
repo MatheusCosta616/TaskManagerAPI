@@ -33,16 +33,18 @@ public class TaskController {
 
     @PostMapping("/task/{id}")
     public ResponseEntity<TaskModel> createTask(@RequestBody @Valid TaskRecordDto taskRecordDto,
-                                                @PathVariable(value = "id") UUID id){
+                                                @PathVariable(value = "id") UUID id) {
         try {
             Optional<UserModel> userOptional = userRepository.findById(id);
-            if(userOptional.isEmpty()){
+            if (userOptional.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
+
             UserModel user = userOptional.get();
             TaskModel taskModel = new TaskModel();
             BeanUtils.copyProperties(taskRecordDto, taskModel);
             taskModel.setUser(user);
+
             TaskModel newTask = taskRepository.save(taskModel);
             return ResponseEntity.status(HttpStatus.CREATED).body(newTask);
         } catch (Exception e) {
