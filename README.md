@@ -14,7 +14,7 @@ Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolv
 1. Crie um banco de dados PostgreSQL com o nome `task_manager`.
 2. Atualize as configurações do banco de dados no arquivo `application.properties` no diretório `src/main/resources`.
 
-```properties
+## properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/task_manager
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
