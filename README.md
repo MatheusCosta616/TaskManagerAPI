@@ -1,4 +1,4 @@
-# Task Manager API v3
+## Task Manager API v3
 
 ## Descrição
 Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolvido em Java usando o framework Spring Boot.
@@ -14,10 +14,11 @@ Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolv
 1. Crie um banco de dados PostgreSQL com o nome `task_manager`.
 2. Atualize as configurações do banco de dados no arquivo `application.properties` no diretório `src/main/resources`.
 
-```properties
+## properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/task_manager
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
+
 
 1. Execute o seguinte comando no seu banco de dados PostgreSQL para ajustar o tipo da coluna id_task na tabela tb_task:
 
@@ -50,9 +51,9 @@ A aplicação estará disponível em http://localhost:8080.
 
 ## COMO UTILIZAR
 
-** UTILIZAR OS SEGUINTES COMANDOS:
+** UTILIZAR OS SEGUINTES COMANDOS (ENDPOINTS):
 
-Para criar um usuário (POST) no banco de dados: http://localhost:8080/user
+Para criar um usuário (POST) no banco de dados: http://localhost:8080/taskmanager-api/user
 
 precisa enviar um JSON contendo as informações do exemplo:
 
@@ -64,11 +65,16 @@ precisa enviar um JSON contendo as informações do exemplo:
 }
 
 
-Para realizar o GET do usuário utilize o link: http://localhost:8080/user
+Para realizar o GET do usuário utilize o link: http://localhost:8080/taskmanager-api/user
 
-Caso queira realizar o GET de apenas um usuário utilze o comando: http://localhost:8080/user/(id do usuário)
+Caso queira realizar o GET de apenas um usuário utilze o comando: http://localhost:8080/taskmanager-api/user/(id do usuário)
 
-Para criar uma tarefa (POST) utilize o seguinte comando: http://localhost:8080/task/{id do usuário)
+Para realizar alguma edição com o método PUT basta utilizar o comando: http://localhost:8080/taskmanager-api/user/(id do usuário)
+e realizar sua edição via JSON
+
+Já para deletar esse usuário, método DELETE, utilize da requisção http://localhost:8080/taskmanager-api/user/(id do usuário)
+
+Para criar uma tarefa (POST) utilize o seguinte comando: http://localhost:8080/taskmanager-api/task/{id do usuário)
 
 abaixo está um exemplo de JSON de tarefa:
 
@@ -83,16 +89,14 @@ abaixo está um exemplo de JSON de tarefa:
 }
 
 
-Caso você queira o retorno de todas tarefas cadastradas utilize o comando (GET): http://localhost:8080/task
+Caso você queira o retorno de todas tarefas cadastradas utilize o comando (GET): http://localhost:8080/taskmanager-api/task
 
-Caso você queira o retorno de apenas uma tarefa utilize o comando (GET): http://localhost:8080/task/(id da tarefa)
+Caso você queira o retorno de apenas uma tarefa utilize o comando (GET): http://localhost:8080/taskmanager-api/task/(id da tarefa)
 
+Para editar a tarefa basta utilizar a requisção PUT com a URL http://localhost:8080/taskmanager-api/task/(id da tarefa) e fazer suas alterações
 
-## Endpoints da API
+Já para deletar essa tarefa utilize o método DELETE com a URL http://localhost:8080/taskmanager-api/task/(id da tarefa)
 
-* POST /users: Cria um novo usuário.
-* POST /tasks: Cria uma nova tarefa para um usuário específico.
-Para obter detalhes sobre os campos necessários para cada endpoint, consulte o código fonte na pasta src/main/java.
 
 ## Tecnologias Utilizadas
 
@@ -117,5 +121,4 @@ ALTER TABLE tb_task ALTER COLUMN id_task TYPE uuid USING id_task::uuid;
 ## O COMANDO DEVERÁ SER REALIZADO NO BANCO DE DADOS
 
 
-
-
+](https://github.com/MatheusCosta616/TaskManagerAPI)https://github.com/MatheusCosta616/TaskManagerAPI
