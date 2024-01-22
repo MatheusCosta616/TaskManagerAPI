@@ -1,11 +1,13 @@
 package com.taskmanagerapi.TaskManagerAPI.controllers;
 
 import com.taskmanagerapi.TaskManagerAPI.dtos.TaskRecordDto;
+import com.taskmanagerapi.TaskManagerAPI.dtos.UserRecordDto;
 import com.taskmanagerapi.TaskManagerAPI.models.TaskModel;
 import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
 import com.taskmanagerapi.TaskManagerAPI.repositories.TaskRepository;
 import com.taskmanagerapi.TaskManagerAPI.repositories.UserRepository;
 import jakarta.validation.Valid;
+import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -74,5 +76,28 @@ public class TaskController {
         }
         task0.get().add(linkTo(methodOn(TaskController.class).getAllTasks()).withRel("User list"));
         return ResponseEntity.status(HttpStatus.OK).body(task0.get());
+    }
+
+    @PutMapping("/task/{id}")
+    public ResponseEntity<Object> updateTask(@PathVariable(value = "id") UUID id,
+                                                @RequestBody @Valid TaskRecordDto taskRecordDto) {
+        Optional<TaskModel> task0 = taskRepository.findById(id);
+        if(task0.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found");
+        }
+        var taskModel = task0.get();
+        BeanUtils.copyProperties(taskRecordDto, taskModel);
+        return ResponseEntity.status(HttpStatus.OK).body(taskRepository.save(taskModel));
+    }
+
+
+    @DeleteMapping("/task/{id}")
+    public ResponseEntity<Object> deleteTask(@PathVariable(value = "id") UUID id){
+        Optional<TaskModel> task0 = taskRepository.findById(id);
+        if(task0.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found.");
+        }
+        taskRepository.delete(task0.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Task deleted successfully.");
     }
 }

@@ -36,7 +36,7 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<TaskModel> tasks;
 
     public UserModel(String userName, Integer userPass, String userEmail) {
