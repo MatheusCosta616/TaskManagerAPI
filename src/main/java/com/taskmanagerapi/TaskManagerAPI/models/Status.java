@@ -1,7 +1,5 @@
 package com.taskmanagerapi.TaskManagerAPI.models;
 
 public enum Status {
-    PENDENTE,
-    EM_ANDAMENTO,
-    FINALIZADO
+    PENDENTE, EM_ANDAMENTO, FINALIZADO
 }
