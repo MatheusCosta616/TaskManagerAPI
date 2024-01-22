@@ -70,12 +70,10 @@ public class UserController {
         }
 
         List<TaskModel> userTasks = optionalUser.get().getTasks();
-        // Mapeie para IDs ou detalhes completos conforme necessário
+
         List<UUID> taskIds = userTasks.stream().map(TaskModel::getIdTask).collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(taskIds);
-        // Ou, se você quiser retornar detalhes completos:
-        // return ResponseEntity.status(HttpStatus.OK).body(userTasks);
     }
 
 

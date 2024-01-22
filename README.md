@@ -1,4 +1,4 @@
-## Task Manager API v3
+# Task Manager API v3
 
 ## Descrição
 Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolvido em Java usando o framework Spring Boot.
@@ -14,11 +14,10 @@ Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolv
 1. Crie um banco de dados PostgreSQL com o nome `task_manager`.
 2. Atualize as configurações do banco de dados no arquivo `application.properties` no diretório `src/main/resources`.
 
-## properties
+```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/task_manager
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
-
 
 1. Execute o seguinte comando no seu banco de dados PostgreSQL para ajustar o tipo da coluna id_task na tabela tb_task:
 
@@ -120,4 +119,3 @@ ALTER TABLE tb_task ALTER COLUMN id_task TYPE uuid USING id_task::uuid;
 
 
 
-](https://github.com/MatheusCosta616/TaskManagerAPI)https://github.com/MatheusCosta616/TaskManagerAPI
