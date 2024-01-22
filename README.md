@@ -1,4 +1,4 @@
-## Task Manager API v3
+## Task Manager API v1
 
 ## Descrição
 Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolvido em Java usando o framework Spring Boot.
@@ -122,3 +122,5 @@ ALTER TABLE tb_task ALTER COLUMN id_task TYPE uuid USING id_task::uuid;
 
 
 ](https://github.com/MatheusCosta616/TaskManagerAPI)https://github.com/MatheusCosta616/TaskManagerAPI
+
+A API ESTA PASSIVEL DE ATUALIZAÇÕES CONSTANTES
