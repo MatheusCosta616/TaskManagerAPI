@@ -2,6 +2,7 @@
 
 ## Descrição
 Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolvido em Java usando o framework Spring Boot.
+Para acessar a documentação acesse http://localhost:8080/swagger-ui/index.html#
 
 ## Requisitos
 - **Java 17**
