@@ -2,10 +2,10 @@ package com.taskmanagerapi.TaskManagerAPI.controllers;
 
 import com.taskmanagerapi.TaskManagerAPI.dtos.UserRecordDto;
 import com.taskmanagerapi.TaskManagerAPI.models.TaskModel;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
 import org.apache.catalina.User;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/taskmanager-api", produces = {"application/json"})
-@Tag(name = "TaskManagerAPI")
+
 public class UserController {
 
     private final UserRepository userRepository;

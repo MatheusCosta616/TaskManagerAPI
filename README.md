@@ -1,7 +1,4 @@
-## Task Manager API v1
-
-
-***A API ESTÁ PASSÍVEL DE ATUALIZAÇÕES CONSTANTES
+## Task Manager API v3
 
 ## Descrição
 Este é um projeto de API para gerenciamento de tarefas (Task Manager) desenvolvido em Java usando o framework Spring Boot.

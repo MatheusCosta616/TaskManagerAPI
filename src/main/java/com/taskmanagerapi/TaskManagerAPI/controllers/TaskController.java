@@ -1,17 +1,17 @@
 package com.taskmanagerapi.TaskManagerAPI.controllers;
 
 import com.taskmanagerapi.TaskManagerAPI.dtos.TaskRecordDto;
-import com.taskmanagerapi.TaskManagerAPI.dtos.UserRecordDto;
+
 import com.taskmanagerapi.TaskManagerAPI.models.TaskModel;
 import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
 import com.taskmanagerapi.TaskManagerAPI.repositories.TaskRepository;
 import com.taskmanagerapi.TaskManagerAPI.repositories.UserRepository;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.apache.catalina.User;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +27,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
-@RequestMapping(value = "/taskmanager-api", produces = {"application/json"})
-@Tag(name = "TaskManagerAPI")
+
 public class TaskController {
 
     private final TaskRepository taskRepository;
@@ -141,4 +140,5 @@ public class TaskController {
         taskRepository.delete(task0.get());
         return ResponseEntity.status(HttpStatus.OK).body("Task deleted successfully.");
     }
+
 }
