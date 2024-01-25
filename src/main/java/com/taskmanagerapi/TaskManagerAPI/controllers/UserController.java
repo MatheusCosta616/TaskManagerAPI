@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
-import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -128,6 +127,7 @@ public class UserController {
         userRepository.delete(user0.get());
         return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully.");
     }
+
     @Operation(summary = "Faz a edição usuário especifico", method = "PUT")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Requisição de arquivo realizado com sucesso"),

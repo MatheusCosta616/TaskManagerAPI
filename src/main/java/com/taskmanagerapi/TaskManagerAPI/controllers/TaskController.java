@@ -1,17 +1,13 @@
 package com.taskmanagerapi.TaskManagerAPI.controllers;
 
 import com.taskmanagerapi.TaskManagerAPI.dtos.TaskRecordDto;
-
 import com.taskmanagerapi.TaskManagerAPI.models.TaskModel;
-import com.taskmanagerapi.TaskManagerAPI.models.UserModel;
 import com.taskmanagerapi.TaskManagerAPI.repositories.TaskRepository;
-import com.taskmanagerapi.TaskManagerAPI.repositories.UserRepository;
-
+import com.taskmanagerapi.TaskManagerAPI.services.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,16 +23,18 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
+@RequestMapping(value = "/taskmanager-api", produces = {"application/json"})
 
 public class TaskController {
 
     private final TaskRepository taskRepository;
-    private final UserRepository userRepository;
+
+    private final TaskService taskService;
 
     @Autowired
-    public TaskController(TaskRepository taskRepository, UserRepository userRepository) {
+    public TaskController(TaskRepository taskRepository, TaskService taskService) {
         this.taskRepository = taskRepository;
-        this.userRepository = userRepository;
+        this.taskService = taskService;
     }
 
     @Operation(summary = "Faz o upload de uma tarefa para um usuário especifico", method = "POST")
@@ -47,25 +45,9 @@ public class TaskController {
             @ApiResponse(responseCode = "500", description = "Erro ao realizar a requisição do arquivo"),
     })
     @PostMapping("/task/{id}")
-    public ResponseEntity<TaskModel> createTask(@RequestBody @Valid TaskRecordDto taskRecordDto,
-                                                @PathVariable(value = "id") UUID id) {
-        try {
-            Optional<UserModel> userOptional = userRepository.findById(id);
-            if (userOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
-
-            UserModel user = userOptional.get();
-            TaskModel taskModel = new TaskModel();
-            BeanUtils.copyProperties(taskRecordDto, taskModel);
-            taskModel.setUser(user);
-
-            TaskModel newTask = taskRepository.save(taskModel);
-            return ResponseEntity.status(HttpStatus.CREATED).body(newTask);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public ResponseEntity<Object> createTask(@RequestBody @Valid TaskRecordDto taskRecordDto,
+                                             @PathVariable(value = "id") UUID userId) {
+        return taskService.createTask(taskRecordDto, userId);
     }
 
     @Operation(summary = "Realiza o requisição de uma tarefa especifica", method = "GET")
